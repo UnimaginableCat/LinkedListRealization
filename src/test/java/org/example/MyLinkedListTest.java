@@ -19,6 +19,7 @@ class MyLinkedListTest {
 
   @Test
   void append() {
+    // test
     MyLinkedList<Integer> actualLinkedList = new MyLinkedList<>();
     actualLinkedList.append(1);
     actualLinkedList.append(2);
