@@ -1,38 +1,54 @@
 package org.example;
 
-import java.util.List;
-
-public class MyLinkedList<T> {
+/**
+ * My linked list realization
+ *
+ * @param <T> Type of items inside the array
+ */
+public class MyLinkedListGeneric<T> {
 
   static class Node<T> {
 
     T data;
-    Node<T> nextItem;
+    Node<T> nextNode;
 
     public Node(T data) {
       this.data = data;
-      this.nextItem = null;
+      this.nextNode = null;
     }
   }
 
-  private Node<T> head;
+  public Node<T> head;
   private int size;
 
-  public MyLinkedList() {
+  public MyLinkedListGeneric() {
     this.head = null;
     this.size = 0;
   }
 
+  /**
+   * This method fills array with test data
+   *
+   * @param firstValue  first value
+   * @param secondValue second value
+   * @param thirdValue  third value
+   */
   public void appendTestData(T firstValue, T secondValue, T thirdValue) {
     Node<T> node1 = new Node<>(firstValue);
     Node<T> node2 = new Node<>(secondValue);
     Node<T> node3 = new Node<>(thirdValue);
     this.head = node1;
-    this.head.nextItem = node2;
-    this.head.nextItem.nextItem = node3;
+    this.head.nextNode = node2;
+    this.head.nextNode.nextNode = node3;
     this.size = 3;
   }
 
+  /**
+   * gets item from array by index
+   *
+   * @param index index of item
+   * @return item of type T
+   */
   public T getItem(int index) {
     if (this.head != null) {
       if (index > this.size - 1
@@ -46,8 +62,8 @@ public class MyLinkedList<T> {
 
       int currentIndex = 0;
       Node<T> currentNode = this.head;
-      while (currentNode.nextItem != null) { // searching for the last node in array
-        currentNode = currentNode.nextItem;
+      while (currentNode.nextNode != null) { // searching for the last node in array
+        currentNode = currentNode.nextNode;
         currentIndex++;
         if (index == currentIndex) {
           return currentNode.data;
@@ -59,19 +75,29 @@ public class MyLinkedList<T> {
     return null;
   }
 
+  /**
+   * method that gets size of array
+   *
+   * @return size of array
+   */
   public int getSize() {
     return this.size;
   }
 
+  /**
+   * appends item to array
+   *
+   * @param data item of type T
+   */
   public void append(T data) {
     Node<T> newNode = new Node<>(data);
 
     if (this.head != null) { // if array is not empty
       Node<T> currentNode = this.head; // getting first node
-      while (currentNode.nextItem != null) { // searching for the last node in array
-        currentNode = currentNode.nextItem;
+      while (currentNode.nextNode != null) { // searching for the last node in array
+        currentNode = currentNode.nextNode;
       }
-      currentNode.nextItem = newNode; // appending new node to last node
+      currentNode.nextNode = newNode; // appending new node to last node
     } else { // if array is empty just adding newNode as a head
       this.head = newNode;
     }

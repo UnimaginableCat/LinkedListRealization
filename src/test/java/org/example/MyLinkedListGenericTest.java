@@ -1,26 +1,30 @@
 package org.example;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class MyLinkedListTest {
+class MyLinkedListGenericTest {
 
-  MyLinkedList<Integer> expectedLinkedList;
+  MyLinkedListGeneric<Integer> expectedLinkedList;
 
+  /**
+   * Creating test array
+   */
   @BeforeEach
   void setup() {
 
-    this.expectedLinkedList = new MyLinkedList<>();
+    this.expectedLinkedList = new MyLinkedListGeneric<>();
     expectedLinkedList.appendTestData(1, 2, 3);
   }
 
+  /**
+   * Append item to array test
+   */
   @Test
   void append() {
     // test
-    MyLinkedList<Integer> actualLinkedList = new MyLinkedList<>();
+    MyLinkedListGeneric<Integer> actualLinkedList = new MyLinkedListGeneric<>();
     actualLinkedList.append(1);
     actualLinkedList.append(2);
     actualLinkedList.append(3);
